@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDV FH UNSRAT - Verein Der Verfahrensrecht</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts: Cinzel (Hukum) & Inter (Modern) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS Link -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind Config Custom Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'law-green': '#064e3b',   /* Hijau Tua Meja Pengadilan */
+                        'law-teal': '#115e59',    /* Teal Background Logo */
+                        'law-gold': '#fbbf24',    /* Emas Logo */
+                        'law-red': '#dc2626',     /* Merah Teks Logo */
+                        'law-black': '#0f172a',   /* Hitam Perisai */
+                    },
+                    fontFamily: {
+                        'serif': ['Cinzel', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gradient-law': 'linear-gradient(to bottom right, #022c22, #0f172a)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-law-black text-gray-100 font-sans antialiased overflow-x-hidden selection:bg-law-gold selection:text-law-black">
+
+    <!-- BACKGROUND WATERMARK (Logo) -->
+    <div class="fixed inset-0 z-0 opacity-10 pointer-events-none flex items-center justify-center overflow-hidden">
+        <img src="logo.jpg" class="w-[150%] max-w-none opacity-20 blur-sm animate-slow-spin">
+    </div>
+    
+    <!-- Overlay Gradient agar tulisan terbaca -->
+    <div class="fixed inset-0 z-0 bg-gradient-to-b from-law-green/80 to-law-black/95 pointer-events-none"></div>
+
+    <!-- NAVBAR GLASSMORPHISM -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 border-b border-white/10 bg-law-black/50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Brand -->
+                <div class="flex items-center gap-3 cursor-pointer group" onclick="navigateTo('home')">
+                    <div class="relative w-12 h-12 rounded-full border-2 border-law-gold p-0.5 shadow-[0_0_15px_rgba(251,191,36,0.5)] group-hover:scale-110 transition duration-300 bg-black">
+                        <img src="logo.jpg" class="w-full h-full object-contain rounded-full">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-law-gold font-serif font-bold text-lg tracking-wider leading-none group-hover:text-white transition">VDV FH UNSRAT</span>
+                        <span class="text-[10px] text-gray-400 tracking-[0.2em] uppercase">Verein Der Verfahrensrecht</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-2">
+                    <button class="nav-item active" onclick="navigateTo('home')">Beranda</button>
+                    <button class="nav-item" onclick="navigateTo('about')">Profil & Sejarah</button>
+                    <button class="nav-item" onclick="navigateTo('agendas')">Agenda</button>
+                    <button class="nav-item" onclick="navigateTo('mubes')">E-Voting</button>
+                    
+                    <div id="auth-desktop" class="ml-6 pl-6 border-l border-white/20">
+                        <!-- Diisi via JS -->
+                    </div>
+                </div>
+
+                <!-- Mobile Button -->
+                <button class="md:hidden text-law-gold" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-law-black/95 border-t border-white/10 absolute w-full">
+            <div class="px-4 py-4 space-y-2">
+                <button class="mobile-item" onclick="navigateTo('home')">Beranda</button>
+                <button class="mobile-item" onclick="navigateTo('about')">Profil</button>
+                <button class="mobile-item" onclick="navigateTo('agendas')">Agenda</button>
+                <button class="mobile-item" onclick="navigateTo('mubes')">E-Voting</button>
+                <div id="auth-mobile" class="mt-4 border-t border-white/10 pt-4"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENT WRAPPER (Relative z-10 agar di atas background) -->
+    <main class="relative z-10 pt-24 pb-12 px-4 min-h-screen">
+
+        <!-- SECTION: HOME -->
+        <section id="home" class="page-section animate-fade-in">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 mt-10 md:mt-20">
+                
+                <!-- Text Content -->
+                <div class="md:w-1/2 text-center md:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-law-gold/10 border border-law-gold/30 text-law-gold text-xs font-bold tracking-widest uppercase animate-pulse">
+                        <span class="w-2 h-2 rounded-full bg-law-gold"></span> Portal Resmi Organisasi
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-serif font-black text-white leading-tight drop-shadow-lg">
+                        Menegakkan <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-law-gold to-yellow-200">Kebenaran</span> <br>
+                        Melalui Prosedur
+                    </h1>
+                    <p class="text-gray-300 text-lg leading-relaxed max-w-xl mx-auto md:mx-0 font-light border-l-4 border-law-red pl-6">
+                        Wadah pencetak litigator handal Fakultas Hukum Unsrat. Fokus pada integritas, kedisiplinan, dan praktik hukum acara.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start">
+                        <button onclick="navigateTo('agendas')" class="btn-primary">
+                            <i data-lucide="gavel" class="w-5 h-5 mr-2"></i> Lihat Kompetisi
+                        </button>
+                        <button onclick="navigateTo('about')" class="btn-secondary">
+                            Tentang Kami
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hero Visual (Logo 3D Effect) -->
+                <div class="md:w-1/2 flex justify-center relative">
+                    <div class="absolute inset-0 bg-law-gold/20 blur-[100px] rounded-full"></div>
+                    <img src="logo.jpg" class="relative w-80 md:w-96 drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)] animate-float border-4 border-law-gold/20 rounded-xl p-2 bg-black/40 backdrop-blur-sm">
+                </div>
+            </div>
+
+            <!-- Stats / Features -->
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-24">
+                <div class="card-feature group">
+                    <div class="icon-box group-hover:bg-law-red group-hover:text-white transition">
+                        <i data-lucide="scale"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-law-gold mb-2">Litigasi</h3>
+                    <p class="text-sm text-gray-400">Pelatihan intensif penyusunan berkas perkara (Legal Drafting).</p>
+                </div>
+                <div class="card-feature group">
+                    <div class="icon-box group-hover:bg-law-gold group-hover:text-black transition">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-law-gold mb-2">Kaderisasi</h3>
+                    <p class="text-sm text-gray-400">Membangun mentalitas yuris yang disiplin dan beretika.</p>
+                </div>
+                <div class="card-feature group">
+                    <div class="icon-box group-hover:bg-law-green group-hover:text-white transition">
+                        <i data-lucide="trophy"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-law-gold mb-2">Prestasi</h3>
+                    <p class="text-sm text-gray-400">Delegasi Nasional (NMCC) pembawa nama harum Unsrat.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: ABOUT -->
+        <section id="about" class="page-section hidden max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-title">Profil & Sejarah</h2>
+                <div class="w-20 h-1 bg-law-gold mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="bg-law-black/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row gap-12 items-center">
+                <div class="md:w-1/3">
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-law-gold rounded-2xl transform rotate-6 group-hover:rotate-3 transition duration-500 opacity-50"></div>
+                        <img src="logo.jpg" class="relative rounded-2xl shadow-xl border border-white/20 w-full bg-black">
+                    </div>
+                </div>
+                <div class="md:w-2/3 space-y-6">
+                    <h3 class="text-3xl font-serif font-bold text-white">Sang Perintis</h3>
+                    <p class="text-gray-300 leading-relaxed text-justify">
+                        <strong class="text-law-gold">Verein Der Verfahrensrecht (VDV)</strong> didirikan oleh <strong class="text-white">Kak Ridwan Pasorong, S.H.</strong> beserta rekan-rekan. VDV hadir dari keresahan mahasiswa hukum yang membutuhkan wadah praktik litigasi yang nyata, bukan sekadar teori.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                        <div class="p-4 bg-law-green/20 border border-law-green/50 rounded-lg">
+                            <h4 class="text-law-gold font-bold mb-1">Visi</h4>
+                            <p class="text-xs text-gray-300">Unggul dalam Hukum Acara, Berintegritas Nasional.</p>
+                        </div>
+                        <div class="p-4 bg-law-red/20 border border-law-red/50 rounded-lg">
+                            <h4 class="text-law-gold font-bold mb-1">Misi</h4>
+                            <p class="text-xs text-gray-300">Pengembangan Hard Skill, Soft Skill & Korsa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ORGANIZATIONAL CHART -->
+            <div class="mt-16 text-center">
+                <h3 class="text-2xl font-serif font-bold text-white mb-8">Struktur Organisasi</h3>
+                <div class="inline-flex flex-col items-center w-full max-w-4xl mx-auto">
+                    <!-- Level 1 -->
+                    <div class="org-box bg-gradient-to-r from-gray-800 to-gray-900 border-gray-600">Pelindung (Dekan)</div>
+                    <div class="h-8 w-0.5 bg-gray-500"></div>
+                    <!-- Level 2 -->
+                    <div class="org-box bg-gradient-to-r from-law-green to-teal-900 border-law-green">Pembina (Dosen)</div>
+                    <div class="h-8 w-0.5 bg-gray-500"></div>
+                    <!-- Level 3 -->
+                    <div class="flex flex-col md:flex-row gap-4 md:gap-12 items-center justify-center w-full relative">
+                        <!-- Connecting Line Horizontal -->
+                        <div class="hidden md:block absolute top-1/2 left-10 right-10 h-0.5 bg-law-gold -z-10"></div>
+                        
+                        <div class="org-box bg-law-black border-law-gold text-law-gold w-48 shadow-[0_0_15px_rgba(251,191,36,0.3)] transform scale-110 z-10">
+                            KETUA UMUM
+                        </div>
+                    </div>
+                    <div class="h-8 w-0.5 bg-law-gold"></div>
+                    <!-- Level 4 -->
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 w-full">
+                        <div class="divisi-item">Litigasi</div>
+                        <div class="divisi-item">Kompetisi</div>
+                        <div class="divisi-item">Kaderisasi</div>
+                        <div class="divisi-item">Humas</div>
+                        <div class="divisi-item">Danus</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: AGENDA -->
+        <section id="agendas" class="page-section hidden max-w-6xl mx-auto">
+            <h2 class="section-title text-center mb-12">Agenda & Kompetisi</h2>
+            
+            <div class="grid md:grid-cols-12 gap-6 min-h-[500px]">
+                <!-- Sidebar Menu -->
+                <div class="md:col-span-3 space-y-3">
+                    <button onclick="switchAgenda('VR')" id="btn-VR" class="agenda-tab active">
+                        <i data-lucide="user-plus" class="w-5 h-5"></i> VR (Recruitment)
+                    </button>
+                    <button onclick="switchAgenda('VMCC')" id="btn-VMCC" class="agenda-tab">
+                        <i data-lucide="gavel" class="w-5 h-5"></i> VMCC (Internal)
+                    </button>
+                    <button onclick="switchAgenda('NMCC')" id="btn-NMCC" class="agenda-tab">
+                        <i data-lucide="award" class="w-5 h-5"></i> NMCC (Nasional)
+                    </button>
+                </div>
+
+                <!-- Content Area -->
+                <div class="md:col-span-9">
+                    <div id="agenda-display" class="bg-law-black/80 border border-law-gold/20 rounded-2xl p-8 h-full shadow-2xl relative overflow-hidden">
+                        <!-- Background Glow -->
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-law-green/20 rounded-full blur-[80px] -z-10"></div>
+                        
+                        <!-- Dynamic Content -->
+                        <div id="agenda-content-inner" class="animate-fade-in relative z-10">
+                            <!-- JS will inject content here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: MUBES -->
+        <section id="mubes" class="page-section hidden max-w-4xl mx-auto">
+            <div class="bg-gradient-to-br from-law-black to-gray-900 border border-law-gold/30 rounded-3xl overflow-hidden shadow-2xl">
+                <!-- Header -->
+                <div class="bg-law-red/90 p-8 text-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                    <i data-lucide="vote" class="w-12 h-12 text-white/80 mx-auto mb-2"></i>
+                    <h2 class="text-3xl font-serif font-bold text-white">E-Voting Ketua Umum</h2>
+                    <p class="text-white/70 text-sm">Gunakan hak suara anda untuk masa depan VDV.</p>
+                </div>
+
+                <!-- Voting Area -->
+                <div class="p-8 md:p-12 min-h-[400px]" id="voting-area">
+                    <!-- JS Injected -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: LOGIN -->
+        <section id="login" class="page-section hidden max-w-md mx-auto py-12">
+            <div class="bg-law-black/80 backdrop-blur-xl border border-law-gold/30 rounded-3xl p-8 shadow-[0_0_30px_rgba(251,191,36,0.1)] relative">
+                <div class="text-center mb-8">
+                    <img src="logo.jpg" class="w-20 h-20 mx-auto mb-4 rounded-full border-2 border-law-gold p-1">
+                    <h2 class="text-2xl font-serif font-bold text-law-gold">Portal Anggota</h2>
+                    <p class="text-gray-400 text-sm">Masuk untuk mengakses E-Voting</p>
+                </div>
+                <form onsubmit="handleLogin(event)" class="space-y-5">
+                    <div class="relative">
+                        <i data-lucide="user" class="absolute left-4 top-3.5 text-gray-500 w-5 h-5"></i>
+                        <input type="text" id="login-name" required class="w-full bg-black/50 border border-gray-700 rounded-xl px-12 py-3 focus:border-law-gold focus:ring-1 focus:ring-law-gold outline-none text-white placeholder-gray-600 transition" placeholder="Nama Lengkap">
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-law-gold to-yellow-600 hover:to-yellow-500 text-black font-bold py-3.5 rounded-xl shadow-lg transition transform active:scale-95">
+                        Masuk Sistem
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/10 bg-black/80 backdrop-blur text-center py-8 relative z-50">
+        <p class="text-law-gold font-serif font-bold tracking-wider">VDV FH UNSRAT</p>
+        <p class="text-xs text-gray-500 mt-2">&copy; 2024 Verein Der Verfahrensrecht. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Logic Script -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>

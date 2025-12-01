@@ -1,0 +1,178 @@
+/* ANIMATIONS */
+@keyframes slow-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+.animate-slow-spin {
+    animation: slow-spin 60s linear infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* COMPONENT CLASSES */
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.nav-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #9ca3af;
+    transition: all 0.3s;
+    border-radius: 0.5rem;
+    letter-spacing: 0.05em;
+}
+.nav-item:hover, .nav-item.active {
+    color: #fbbf24; /* Gold */
+    background: rgba(251, 191, 36, 0.1);
+}
+
+.mobile-item {
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    color: #d1d5db;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.mobile-item:hover {
+    color: #fbbf24;
+    padding-left: 1.5rem; /* Slide effect */
+    background: rgba(255,255,255,0.05);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    color: #0f172a;
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(251, 191, 36, 0.5);
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s;
+}
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: white;
+}
+
+/* Feature Cards */
+.card-feature {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    transition: all 0.3s;
+    cursor: default;
+}
+.card-feature:hover {
+    background: rgba(15, 23, 42, 0.9);
+    border-color: #fbbf24;
+    transform: translateY(-5px);
+}
+
+.icon-box {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: #fbbf24;
+}
+
+/* Org Chart Items */
+.org-box {
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.divisi-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #d1d5db;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.divisi-item:hover {
+    background: #064e3b; /* Green Hover */
+    border-color: #fbbf24;
+    color: white;
+}
+
+/* Agenda Tabs */
+.agenda-tab {
+    width: 100%;
+    text-align: left;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    color: #9ca3af;
+    transition: all 0.3s;
+    background: transparent;
+    border: 1px solid transparent;
+}
+.agenda-tab:hover {
+    background: rgba(255,255,255,0.05);
+    color: white;
+}
+.agenda-tab.active {
+    background: linear-gradient(90deg, #dc2626 0%, #991b1b 100%); /* Red Gradient */
+    color: white;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    border: 1px solid #ef4444;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0f172a; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #fbbf24; }
